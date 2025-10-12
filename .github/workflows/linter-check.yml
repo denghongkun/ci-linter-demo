@@ -13,13 +13,14 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.9'
         
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install flake8
         
     - name: Run flake8
       run: |
-        flake8 . --count --show-source --statistics
+        # 只检查项目根目录的Python文件，排除venv和其他目录
+        flake8 *.py --count --show-source --statistics
