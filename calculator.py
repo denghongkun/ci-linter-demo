@@ -10,3 +10,10 @@ def subtract(a, b):
     返回两个数的差
     """
     return a - b
+
+
+def multiply(a, b):
+    """
+    返回两个数的乘积
+    """
+    return a * b

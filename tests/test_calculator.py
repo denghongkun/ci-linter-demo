@@ -1,6 +1,6 @@
 """Test cases for calculator module."""
 import pytest
-from calculator import add, subtract
+from calculator import add, subtract, multiply
 
 
 def test_add_positive_numbers():
@@ -49,3 +49,21 @@ def test_subtract_zero():
     """测试零值情况"""
     assert subtract(5, 0) == 5
     assert subtract(0, 5) == -5
+
+
+def test_multiply_positive_numbers():
+    """测试正数相乘"""
+    assert multiply(2, 3) == 6
+    assert multiply(5, 4) == 20
+
+
+def test_multiply_negative_numbers():
+    """测试负数相乘"""
+    assert multiply(-2, 3) == -6
+    assert multiply(-2, -3) == 6
+
+
+def test_multiply_zero():
+    """测试零值相乘"""
+    assert multiply(5, 0) == 0
+    assert multiply(0, 10) == 0
