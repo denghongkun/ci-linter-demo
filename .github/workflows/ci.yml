@@ -1,9 +1,9 @@
-name: Code Style Linter
+name: CI Pipeline
 
 on: [push, pull_request]
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     
     steps:
@@ -13,14 +13,17 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.12'
+        python-version: '3.9'
         
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8
+        pip install -r requirements.txt
         
-    - name: Run flake8
+    - name: Run linter
       run: |
-        # 只检查项目根目录的Python文件，排除venv和其他目录
-        flake8 *.py --count --show-source --statistics
+        flake8 . --exclude=venv/* --max-line-length=88
+        
+    - name: Run unit tests
+      run: |
+        pytest -v
