@@ -22,7 +22,7 @@ jobs:
         
     - name: Run linter
       run: |
-        flake8 . --exclude=venv/* --max-line-length=88
+        flake8 .
         
     - name: Run unit tests
       run: |
